@@ -159,47 +159,65 @@ section { padding-block: clamp(4rem, 10vw, 8rem); position: relative; }
 [data-parallax] > img { will-change: transform; transform: translate3d(0, var(--py, 0px), 0) scale(1.14); }
 .hero-bg[data-parallax] > img { transform: translate3d(0, var(--py, 0px), 0) scale(1.1); }
 
-/* --- Walk band: the dog crosses the screen as you scroll --- */
-.walk-band {
-  position: relative; height: 140px; margin-block: clamp(1rem, 4vw, 2.5rem);
-  overflow: hidden; color: var(--forest);
-}
-.walk-route {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  opacity: .22;
-  stroke-dasharray: 7 11;
-  stroke-dashoffset: var(--route, 1000);
-}
-.walk-paws { position: absolute; inset: 0; }
-.walk-paws .wp:nth-child(odd)  { margin-top: -19px; }
-.walk-paws .wp:nth-child(even) { margin-top: 5px; }
-.walk-paws .wp {
-  position: absolute; width: 22px; height: 22px;
-  left: calc(3% + var(--i) * 8%);
-  top: 56%;
-  transform: rotate(calc(var(--i) * 11deg - 30deg)) scale(var(--s, 0));
+/* --- Paw trails: decorative, injected by main.js --- */
+.paw {
+  position: absolute;
+  left: var(--x); top: var(--y);
+  width: var(--w, 26px); height: var(--w, 26px);
+  margin: calc(var(--w, 26px) / -2);
+  transform: rotate(var(--r, 0deg)) scale(var(--s, .5));
   opacity: var(--o, 0);
-  transition: none;
+  transition: opacity .45s var(--ease), transform .45s var(--ease);
+  pointer-events: none;
 }
-.walk-dog {
-  position: absolute; top: 28px; left: 0;
-  width: clamp(76px, 9vw, 112px);
-  transform: translate3d(var(--dx, 0px), 0, 0);
-  will-change: transform;
+
+/* the short trail that walks you into the section */
+.lead-in {
+  position: relative;
+  height: 130px;
+  margin: -1rem auto clamp(1rem, 3vw, 2rem);
+  max-width: 340px;
 }
-.walk-dog svg { width: 100%; height: auto; overflow: visible; }
-.walk-dog .leg  { transform-origin: 50% 0%; animation: trot .62s linear infinite; }
-.walk-dog .lf2,
-.walk-dog .lb2  { animation-delay: -.31s; }
-.walk-dog .tail { transform-origin: 30px 40px; animation: wag .5s ease-in-out infinite alternate; }
-@keyframes trot { 0%{transform:rotate(19deg)} 50%{transform:rotate(-19deg)} 100%{transform:rotate(19deg)} }
-@keyframes wag  { from{transform:rotate(-13deg)} to{transform:rotate(13deg)} }
+
+/* --- Steps as a walk down the page --- */
+.walk-steps { position: relative; max-width: 62rem; margin-inline: auto; padding-block: 1rem; }
+.trail { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+
+.wstep {
+  position: relative; z-index: 1;
+  display: flex; gap: 1.5rem; align-items: flex-start;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+  box-shadow: var(--shadow-xs);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s;
+}
+.wstep:last-child { margin-bottom: 0; }
+.wstep:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: transparent; }
+
+.wstep-n {
+  flex: none;
+  width: clamp(54px, 7vw, 72px); height: clamp(54px, 7vw, 72px);
+  border-radius: 50%;
+  background: var(--sunshine-lo); color: var(--terracotta);
+  display: grid; place-items: center;
+  font-family: var(--font-head); font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1;
+  transition: background .35s var(--ease), color .35s var(--ease), transform .35s var(--ease);
+}
+.wstep:hover .wstep-n { background: var(--sunshine); color: var(--cta-text); transform: scale(1.06); }
+.wstep-body h3 { font-size: clamp(1.35rem, 2.6vw, 1.85rem); margin-bottom: .5rem; }
+.wstep-body p  { color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.1rem); margin-bottom: 0; }
+
+@media (min-width: 56rem) {
+  .wstep     { width: 60%; }
+  .wstep.alt { margin-left: auto; }
+}
 
 @media (prefers-reduced-motion: reduce) {
-  [data-parallax] > img { transform: none !important; }
-  .walk-dog { display: none; }
-  .walk-paws .wp { --o: .28; --s: 1; }
-  .walk-route { stroke-dashoffset: 0 !important; }
+  .paw { --o: .26 !important; --s: 1 !important; transition: none; }
 }
 
 /* --- Scroll reveals --- */
@@ -212,22 +230,6 @@ section { padding-block: clamp(4rem, 10vw, 8rem); position: relative; }
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] { opacity: 1 !important; transform: none !important; transition: none; }
 }
-
-/* --- Steps --- */
-.steps { display: grid; gap: 1.25rem; grid-template-columns: 1fr; counter-reset: step; }
-@media (min-width: 52rem) { .steps { grid-template-columns: repeat(4, 1fr); gap: 1rem; } }
-.step {
-  background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg);
-  padding: 2rem 1.6rem; position: relative; transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s;
-}
-.step:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: transparent; }
-.step-n {
-  width: 42px; height: 42px; border-radius: 50%; background: var(--sunshine-lo); color: var(--terracotta);
-  display: grid; place-items: center; font-family: var(--font-head); font-weight: 700; font-size: 1.05rem;
-  margin-bottom: 1.1rem; transition: background .3s, color .3s;
-}
-.step:hover .step-n { background: var(--sunshine); color: var(--cta-text); }
-.step p { color: var(--muted); font-size: .97rem; margin-bottom: 0; }
 
 /* --- Cards --- */
 .grid { display: grid; gap: 1.5rem; grid-template-columns: 1fr; }

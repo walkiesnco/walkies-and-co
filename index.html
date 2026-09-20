@@ -95,65 +95,47 @@
         <p class="lead">No apps to download, no account to make. A message, a coffee, and a routine that just runs.</p>
       </div>
 
-      <div class="steps">
-        <div class="step" data-reveal="up">
-          <div class="step-n">1</div>
-          <h3>Send an enquiry</h3>
-          <p>Tell me your dog&rsquo;s name, your neighbourhood and the days that would suit. About a minute of typing.</p>
-        </div>
-        <div class="step" data-reveal="up" data-delay="110">
-          <div class="step-n">2</div>
-          <h3>Meet &amp; greet</h3>
-          <p>I come to you. We talk routes, habits and keys, and your dog gets the final say on whether I pass.</p>
-        </div>
-        <div class="step" data-reveal="up" data-delay="220">
-          <div class="step-n">3</div>
-          <h3>Complete the profile</h3>
-          <p>Vet, health, quirks and emergency contacts, filled in together on my tablet while we&rsquo;re sat there.</p>
-        </div>
-        <div class="step" data-reveal="up" data-delay="330">
-          <div class="step-n">4</div>
-          <h3>Schedule walks</h3>
-          <p>Your regular slot goes in the diary and stays there. Photo and note land after every walk.</p>
-        </div>
+      <!-- paws lead you down into the steps -->
+      <div class="lead-in" data-trail="lead" aria-hidden="true"></div>
+
+      <div class="walk-steps">
+        <div class="trail trail-a" data-trail="main" aria-hidden="true"></div>
+        <div class="trail trail-b" data-trail="second" aria-hidden="true"></div>
+
+        <article class="wstep" data-reveal="up">
+          <div class="wstep-n">1</div>
+          <div class="wstep-body">
+            <h3>Send an enquiry</h3>
+            <p>Tell me your dog&rsquo;s name, your neighbourhood and which days would suit you. About a minute of typing, and there&rsquo;s nothing to sign up for.</p>
+          </div>
+        </article>
+
+        <article class="wstep alt" data-reveal="up">
+          <div class="wstep-n">2</div>
+          <div class="wstep-body">
+            <h3>Meet &amp; greet</h3>
+            <p>I come to you. We talk routes, habits, keys and the things that set your dog off &mdash; and your dog gets the final say on whether I pass.</p>
+          </div>
+        </article>
+
+        <article class="wstep" data-reveal="up">
+          <div class="wstep-n">3</div>
+          <div class="wstep-body">
+            <h3>Complete the profile</h3>
+            <p>Vet details, health, medication, quirks and emergency contacts. We fill it in together on my tablet while we&rsquo;re sat there, so nothing gets forgotten.</p>
+          </div>
+        </article>
+
+        <article class="wstep alt" data-reveal="up">
+          <div class="wstep-n">4</div>
+          <div class="wstep-body">
+            <h3>Schedule walks</h3>
+            <p>Your regular slot goes in the diary and stays there. A photo, the route and a short note land after every single walk.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
-  <!-- ===== scroll-scrubbed walk: the dog crosses as you scroll ===== -->
-  <div class="walk-band" aria-hidden="true">
-    <svg class="walk-route" viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path d="M0 82 C 180 82, 250 44, 430 48 S 770 90, 910 64 S 1115 42, 1200 54" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="7 11"/>
-    </svg>
-    <div class="walk-paws">
-      <svg class="wp" viewBox="0 0 24 24" fill="currentColor" style="--i:0"><ellipse cx="12" cy="15.6" rx="5" ry="4.2"/><ellipse cx="5.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="18.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="9.3" cy="4.6" rx="2.1" ry="2.8"/><ellipse cx="14.7" cy="4.6" rx="2.1" ry="2.8"/></svg>
-      <svg class="wp" viewBox="0 0 24 24" fill="currentColor" style="--i:1"><ellipse cx="12" cy="15.6" rx="5" ry="4.2"/><ellipse cx="5.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="18.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="9.3" cy="4.6" rx="2.1" ry="2.8"/><ellipse cx="14.7" cy="4.6" rx="2.1" ry="2.8"/></svg>
-      <svg class="wp" viewBox="0 0 24 24" fill="currentColor" style="--i:2"><ellipse cx="12" cy="15.6" rx="5" ry="4.2"/><ellipse cx="5.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="18.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="9.3" cy="4.6" rx="2.1" ry="2.8"/><ellipse cx="14.7" cy="4.6" rx="2.1" ry="2.8"/></svg>
-      <svg class="wp" viewBox="0 0 24 24" fill="currentColor" style="--i:3"><ellipse cx="12" cy="15.6" rx="5" ry="4.2"/><ellipse cx="5.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="18.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="9.3" cy="4.6" rx="2.1" ry="2.8"/><ellipse cx="14.7" cy="4.6" rx="2.1" ry="2.8"/></svg>
-      <svg class="wp" viewBox="0 0 24 24" fill="currentColor" style="--i:4"><ellipse cx="12" cy="15.6" rx="5" ry="4.2"/><ellipse cx="5.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="18.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="9.3" cy="4.6" rx="2.1" ry="2.8"/><ellipse cx="14.7" cy="4.6" rx="2.1" ry="2.8"/></svg>
-      <svg class="wp" viewBox="0 0 24 24" fill="currentColor" style="--i:5"><ellipse cx="12" cy="15.6" rx="5" ry="4.2"/><ellipse cx="5.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="18.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="9.3" cy="4.6" rx="2.1" ry="2.8"/><ellipse cx="14.7" cy="4.6" rx="2.1" ry="2.8"/></svg>
-      <svg class="wp" viewBox="0 0 24 24" fill="currentColor" style="--i:6"><ellipse cx="12" cy="15.6" rx="5" ry="4.2"/><ellipse cx="5.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="18.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="9.3" cy="4.6" rx="2.1" ry="2.8"/><ellipse cx="14.7" cy="4.6" rx="2.1" ry="2.8"/></svg>
-      <svg class="wp" viewBox="0 0 24 24" fill="currentColor" style="--i:7"><ellipse cx="12" cy="15.6" rx="5" ry="4.2"/><ellipse cx="5.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="18.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="9.3" cy="4.6" rx="2.1" ry="2.8"/><ellipse cx="14.7" cy="4.6" rx="2.1" ry="2.8"/></svg>
-      <svg class="wp" viewBox="0 0 24 24" fill="currentColor" style="--i:8"><ellipse cx="12" cy="15.6" rx="5" ry="4.2"/><ellipse cx="5.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="18.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="9.3" cy="4.6" rx="2.1" ry="2.8"/><ellipse cx="14.7" cy="4.6" rx="2.1" ry="2.8"/></svg>
-      <svg class="wp" viewBox="0 0 24 24" fill="currentColor" style="--i:9"><ellipse cx="12" cy="15.6" rx="5" ry="4.2"/><ellipse cx="5.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="18.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="9.3" cy="4.6" rx="2.1" ry="2.8"/><ellipse cx="14.7" cy="4.6" rx="2.1" ry="2.8"/></svg>
-      <svg class="wp" viewBox="0 0 24 24" fill="currentColor" style="--i:10"><ellipse cx="12" cy="15.6" rx="5" ry="4.2"/><ellipse cx="5.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="18.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="9.3" cy="4.6" rx="2.1" ry="2.8"/><ellipse cx="14.7" cy="4.6" rx="2.1" ry="2.8"/></svg>
-      <svg class="wp" viewBox="0 0 24 24" fill="currentColor" style="--i:11"><ellipse cx="12" cy="15.6" rx="5" ry="4.2"/><ellipse cx="5.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="18.5" cy="9.4" rx="2.3" ry="3"/><ellipse cx="9.3" cy="4.6" rx="2.1" ry="2.8"/><ellipse cx="14.7" cy="4.6" rx="2.1" ry="2.8"/></svg>
-    </div>
-    <div class="walk-dog">
-      <svg viewBox="0 0 132 86" fill="#2F5D50">
-        <path class="tail" d="M30 40 Q16 32 19 15" stroke="#2F5D50" stroke-width="6" stroke-linecap="round" fill="none"/>
-        <rect class="leg lb" x="36" y="50" width="7" height="26" rx="3.5"/>
-        <rect class="leg lf" x="86" y="50" width="7" height="26" rx="3.5"/>
-        <ellipse cx="64" cy="44" rx="32" ry="16"/>
-        <rect class="leg lb2" x="48" y="50" width="7" height="26" rx="3.5"/>
-        <rect class="leg lf2" x="74" y="50" width="7" height="26" rx="3.5"/>
-        <path d="M88 34 L100 20 L112 30 Z"/>
-        <ellipse cx="105" cy="26" rx="14" ry="11"/>
-        <rect x="112" y="26" width="17" height="9" rx="4.5"/>
-        <circle cx="127" cy="29" r="2.6" fill="#1B3A31"/>
-        <path class="ear" d="M99 15 Q94 2 104 6 Q106 12 103 18 Z"/>
-      </svg>
-    </div>
-  </div>
 
   <!-- ================= PROMISE (split) ================= -->
   <section class="bg-cream">

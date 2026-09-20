@@ -61,17 +61,48 @@
     return Math.min(1, Math.max(0, (vh - rect.top) / (vh + rect.height)));
   }
 
-  var parallax = Array.prototype.slice.call(document.querySelectorAll("[data-parallax]"));
-  var band = document.querySelector(".walk-band");
-  var dog = band && band.querySelector(".walk-dog");
-  var paws = band ? Array.prototype.slice.call(band.querySelectorAll(".wp")) : [];
-  var route = band && band.querySelector(".walk-route path");
-  var routeLen = 0;
+  var PAW = '<svg viewBox="0 0 24 24" fill="currentColor">' +
+    '<ellipse cx="12" cy="15.6" rx="5" ry="4.2"/>' +
+    '<ellipse cx="5.5" cy="9.4" rx="2.3" ry="3"/>' +
+    '<ellipse cx="18.5" cy="9.4" rx="2.3" ry="3"/>' +
+    '<ellipse cx="9.3" cy="4.6" rx="2.1" ry="2.8"/>' +
+    '<ellipse cx="14.7" cy="4.6" rx="2.1" ry="2.8"/></svg>';
 
-  if (route && route.getTotalLength) {
-    routeLen = route.getTotalLength();
-    route.style.strokeDasharray = "7 11";
-  }
+  /* Each trail is a walk down the page: paws alternate left and right of a
+     meandering centre line, angled to follow the direction of travel. */
+  var TRAILS = {
+    lead:   { n: 7,  x: 50, amp: 13, turns: 1.1, w: 22, stride: 8,  colour: "var(--forest)",     opacity: .30, from: 6,  to: 96 },
+    main:   { n: 18, x: 50, amp: 17, turns: 2.2, w: 27, stride: 10, colour: "var(--forest)",     opacity: .26, from: 2,  to: 99 },
+    second: { n: 13, x: 62, amp: 11, turns: 1.6, w: 19, stride: 9,  colour: "var(--terracotta)", opacity: .30, from: 24, to: 97 }
+  };
+
+  var trails = [];
+  document.querySelectorAll("[data-trail]").forEach(function (host) {
+    var cfg = TRAILS[host.dataset.trail];
+    if (!cfg) return;
+    host.style.color = cfg.colour;
+    var paws = [];
+    for (var i = 0; i < cfg.n; i++) {
+      var t = i / (cfg.n - 1);
+      var y = cfg.from + t * (cfg.to - cfg.from);
+      var wobble = Math.sin(t * Math.PI * cfg.turns) * cfg.amp;
+      var side = (i % 2 === 0 ? -1 : 1) * cfg.stride;   // left paw, right paw
+      // angle follows the tangent of the meander so the gait reads correctly
+      var tangent = Math.cos(t * Math.PI * cfg.turns) * cfg.turns * cfg.amp;
+      var el = document.createElement("span");
+      el.className = "paw";
+      el.style.setProperty("--x", (cfg.x + wobble + side) + "%");
+      el.style.setProperty("--y", y + "%");
+      el.style.setProperty("--w", cfg.w + "px");
+      el.style.setProperty("--r", (Math.atan2(28, -tangent) * 180 / Math.PI - 90).toFixed(1) + "deg");
+      el.innerHTML = PAW;
+      host.appendChild(el);
+      paws.push(el);
+    }
+    trails.push({ host: host, paws: paws, op: cfg.opacity });
+  });
+
+  var parallax = Array.prototype.slice.call(document.querySelectorAll("[data-parallax]"));
 
   function frame() {
     var vh = window.innerHeight;
@@ -85,26 +116,17 @@
       el.style.setProperty("--py", ((progress(r, vh) - 0.5) * -2 * amt).toFixed(1) + "px");
     }
 
-    // The dog walks across, the route draws itself, paws land behind it.
-    if (band) {
-      var br = band.getBoundingClientRect();
-      if (br.bottom > -100 && br.top < vh + 100) {
-        var p = progress(br, vh);
-
-        if (dog) {
-          var travel = band.clientWidth - dog.offsetWidth;
-          dog.style.setProperty("--dx", (p * travel).toFixed(1) + "px");
-        }
-        if (route && routeLen) {
-          route.style.strokeDashoffset = (routeLen * (1 - Math.min(1, p * 1.15))).toFixed(1);
-        }
-        // Each paw appears just after the dog has passed over it.
-        for (var j = 0; j < paws.length; j++) {
-          var at = (j + 0.6) / paws.length;
-          var on = p >= at * 0.92;
-          paws[j].style.setProperty("--o", on ? "0.3" : "0");
-          paws[j].style.setProperty("--s", on ? "1" : "0.4");
-        }
+    // Paws land one after another as you scroll down, and lift as you scroll back up.
+    for (var t = 0; t < trails.length; t++) {
+      var tr = trails[t];
+      var br = tr.host.getBoundingClientRect();
+      if (br.bottom < -150 || br.top > vh + 150) continue;
+      // read against the viewport middle so paws land just ahead of the reader
+      var p = Math.min(1, Math.max(0, (vh * 0.82 - br.top) / br.height));
+      for (var k = 0; k < tr.paws.length; k++) {
+        var on = p >= (k + 0.5) / tr.paws.length;
+        tr.paws[k].style.setProperty("--o", on ? tr.op : 0);
+        tr.paws[k].style.setProperty("--s", on ? 1 : 0.45);
       }
     }
   }
