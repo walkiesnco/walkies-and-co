@@ -153,29 +153,54 @@ section { padding-block: clamp(4rem, 10vw, 8rem); position: relative; }
 .hero-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2.5rem; color: rgba(255,255,255,.72); font-size: .92rem; }
 .hero-meta span { display: flex; align-items: center; gap: .5rem; }
 
-/* --- Marquee strip --- */
-.strip { background: var(--forest); color: var(--on-forest); padding-block: 1.1rem; overflow: hidden; }
-.strip-track { display: flex; gap: 3rem; white-space: nowrap; animation: slide 38s linear infinite; width: max-content; }
-.strip-track span { display: flex; align-items: center; gap: .7rem; font-size: .95rem; font-weight: 500; letter-spacing: .01em; }
-.strip-track svg { opacity: .85; flex: none; }
-@keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) {
-  .strip-track { animation: none; flex-wrap: wrap; white-space: normal; justify-content: center; gap: 1.5rem; width: auto; }
-}
 
-/* --- Paw trail (the walk across the screen) --- */
-.paw-trail { position: relative; height: 90px; display: flex; align-items: center; justify-content: center; gap: clamp(1.5rem,5vw,4rem); pointer-events: none; }
-.paw-trail svg { opacity: 0; transform: translateY(14px) rotate(var(--rot, 0deg)); transition: opacity .5s var(--ease), transform .5s var(--ease); }
-.paw-trail svg:nth-child(odd) { margin-top: -22px; }
-.paw-trail.in svg { opacity: .3; transform: translateY(0) rotate(var(--rot, 0deg)); }
-.paw-trail.in svg:nth-child(1) { transition-delay: .05s }
-.paw-trail.in svg:nth-child(2) { transition-delay: .17s }
-.paw-trail.in svg:nth-child(3) { transition-delay: .29s }
-.paw-trail.in svg:nth-child(4) { transition-delay: .41s }
-.paw-trail.in svg:nth-child(5) { transition-delay: .53s }
-.paw-trail.in svg:nth-child(6) { transition-delay: .65s }
-.paw-trail.in svg:nth-child(7) { transition-delay: .77s }
-.paw-trail.in svg:nth-child(8) { transition-delay: .89s }
+/* --- Parallax: images drift slower than the page (scrub-linked) --- */
+[data-parallax] { overflow: hidden; }
+[data-parallax] > img { will-change: transform; transform: translate3d(0, var(--py, 0px), 0) scale(1.14); }
+.hero-bg[data-parallax] > img { transform: translate3d(0, var(--py, 0px), 0) scale(1.1); }
+
+/* --- Walk band: the dog crosses the screen as you scroll --- */
+.walk-band {
+  position: relative; height: 140px; margin-block: clamp(1rem, 4vw, 2.5rem);
+  overflow: hidden; color: var(--forest);
+}
+.walk-route {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  opacity: .22;
+  stroke-dasharray: 7 11;
+  stroke-dashoffset: var(--route, 1000);
+}
+.walk-paws { position: absolute; inset: 0; }
+.walk-paws .wp:nth-child(odd)  { margin-top: -19px; }
+.walk-paws .wp:nth-child(even) { margin-top: 5px; }
+.walk-paws .wp {
+  position: absolute; width: 22px; height: 22px;
+  left: calc(3% + var(--i) * 8%);
+  top: 56%;
+  transform: rotate(calc(var(--i) * 11deg - 30deg)) scale(var(--s, 0));
+  opacity: var(--o, 0);
+  transition: none;
+}
+.walk-dog {
+  position: absolute; top: 28px; left: 0;
+  width: clamp(76px, 9vw, 112px);
+  transform: translate3d(var(--dx, 0px), 0, 0);
+  will-change: transform;
+}
+.walk-dog svg { width: 100%; height: auto; overflow: visible; }
+.walk-dog .leg  { transform-origin: 50% 0%; animation: trot .62s linear infinite; }
+.walk-dog .lf2,
+.walk-dog .lb2  { animation-delay: -.31s; }
+.walk-dog .tail { transform-origin: 30px 40px; animation: wag .5s ease-in-out infinite alternate; }
+@keyframes trot { 0%{transform:rotate(19deg)} 50%{transform:rotate(-19deg)} 100%{transform:rotate(19deg)} }
+@keyframes wag  { from{transform:rotate(-13deg)} to{transform:rotate(13deg)} }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-parallax] > img { transform: none !important; }
+  .walk-dog { display: none; }
+  .walk-paws .wp { --o: .28; --s: 1; }
+  .walk-route { stroke-dashoffset: 0 !important; }
+}
 
 /* --- Scroll reveals --- */
 [data-reveal] { opacity: 0; transition: opacity .75s var(--ease), transform .75s var(--ease); will-change: opacity, transform; }
