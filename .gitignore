@@ -1,0 +1,12 @@
+# Private business planning — never publish. Contains pricing strategy,
+# income projections, legal/insurance risk notes and personal details.
+dog-walking-haarlem-mvp-plan.md
+*-plan.md
+notes/
+private/
+
+# OS / editor noise
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
