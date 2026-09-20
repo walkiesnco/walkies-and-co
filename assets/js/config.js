@@ -34,7 +34,7 @@ const SITE = {
   },
 
   // --- Canonical URL (swap when the custom domain lands) ---
-  canonical: "TODO_PAGES_DEV_URL"
+  canonical: "https://walkies-and-co.walkiesnco.workers.dev"
 };
 
 /* Derived links — don't edit, these build themselves from the values above. */

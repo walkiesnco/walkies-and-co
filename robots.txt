@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
-Sitemap: TODO_PAGES_DEV_URL/sitemap.xml
+# Internal project docs — not for visitors or search engines
+Disallow: /CLAUDE.md
+Disallow: /README.md
+Disallow: /terms/
+
+Sitemap: https://walkies-and-co.walkiesnco.workers.dev/sitemap.xml
