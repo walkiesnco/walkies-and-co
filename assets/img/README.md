@@ -1,32 +1,35 @@
 # Images
 
-## ⚠️ The `placeholder-*.jpg` files are TEMPORARY
+## ⚠️ Every `ph-*.webp` is a TEMPORARY placeholder
 
-They are free-licence stock photos from Unsplash, used only so the design can be
-judged before Jean's own photos exist. **They must all be replaced before launch.**
+Free-licence Unsplash photos, here only so the design can be judged before Jean's
+own photos exist. **All of them must be replaced before launch.**
 
-The whole proposition of this business is "a real person who really turns up".
-Launching with stock photos of dogs that are not clients quietly contradicts that,
-and it is the kind of thing people notice.
+The proposition is "a real person who really turns up". Stock photos of dogs that
+aren't clients quietly contradict that, and people notice.
+
+### Selection rules (learned the hard way)
+
+Reject any photo that:
+- has the dog **staring straight down the lens** — reads as AI-generated
+- uses a **plain studio backdrop** (yellow, pink, grey, faded gradient) — same problem
+- contains **another company's branding** (two candidates had Chewy and Champion logos)
+
+Prefer: dogs **mid-walk or mid-run**, real streets and parks, natural light,
+people and leads visible, dogs looking anywhere but at the camera.
 
 | File | Replace with |
 |---|---|
-| `placeholder-hero.jpg` | Jean walking a dog on a real Haarlem route — landscape, shot wide, room on the left for the headline |
-| `placeholder-dunes.jpg` | Portrait of Jean with a dog — this sits next to "Meet Jean" |
-| `placeholder-tulip.jpg` | A client dog, portrait orientation |
-| `placeholder-golden.jpg` | A client dog |
-| `placeholder-street.jpg` | A client dog out on a walk |
+| `ph-hero.webp` | Jean walking a dog on a real Haarlem route. Landscape 1500×844. Shoot wide — the left half sits under the headline |
+| `ph-walker.webp` | A dog on the lead beside Jean, pavement or canal path. Portrait 720×900 |
+| `ph-field.webp` | **The most important photo on the site** — Jean with a dog, at dog height, looking at the camera. Portrait 720×900 |
+| `ph-street.webp` | A client dog out walking. Square 620×620 |
+| `ph-run.webp` | A client dog, ideally in motion. Square 620×620 |
+| `ph-grass.webp` | A client dog in a park. Square 620×620 |
+| `og-image.jpg` | Social preview, 1200×630. **Keep this one JPEG** — WhatsApp handles WebP previews badly, and WhatsApp is the main sharing channel |
 
-## Shot list
+### Export settings
 
-- **Hero**: landscape, Jean *and* a dog both visible, taken on a recognisable
-  Haarlem route (Haarlemmerhout, Kenaupark, along the Spaarne). Shoot wide —
-  the left third gets covered by the headline. Good light, early or late.
-- **Portrait**: Jean crouched at dog height, looking at the camera, smiling.
-  This is the single most important photo on the site.
-- **Walk shots**: three or four dogs mid-walk. Square crops work best.
-
-Get the owner's written permission for any dog that is not Jean's — the client
-agreement form has a photo-permission field for exactly this.
-
-Keep files under ~300KB. Export at around 1600px wide for the hero, 1000px for the rest.
+WebP, quality ~58-60. Keep each file under ~200KB; the whole page should stay
+under about 600KB. Get written owner permission for any dog that isn't Jean's —
+the client agreement form has a photo-permission field for this.
