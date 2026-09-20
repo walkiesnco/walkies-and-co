@@ -8,7 +8,12 @@
 <meta property="og:title" content="Walkies &amp; Co. — Dog Walking in Haarlem">
 <meta property="og:description" content="20-minute dog walks in Haarlem. Same walker every time. Photo and note after every walk.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://walkies-and-co.walkiesnco.workers.dev/assets/img/placeholder-hero.jpg">
+<meta name="theme-color" content="#2F5D50">
 <link rel="canonical" href="https://walkies-and-co.walkiesnco.workers.dev/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 <script type="application/ld+json">
 {
@@ -32,18 +37,8 @@
   },
   "knowsLanguage": ["en", "nl"],
   "makesOffer": [
-    {
-      "@type": "Offer",
-      "itemOffered": { "@type": "Service", "name": "Introduction session" },
-      "price": "0",
-      "priceCurrency": "EUR"
-    },
-    {
-      "@type": "Offer",
-      "itemOffered": { "@type": "Service", "name": "20-minute dog walk" },
-      "price": "11",
-      "priceCurrency": "EUR"
-    }
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Introduction session" }, "price": "0", "priceCurrency": "EUR" },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "20-minute dog walk" }, "price": "11", "priceCurrency": "EUR" }
   ]
 }
 </script>
@@ -52,7 +47,16 @@
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/">Walkies &amp; Co.</a>
+    <a class="brand" href="/">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <ellipse cx="12" cy="15.5" rx="5" ry="4.2" fill="#F2A541"/>
+        <ellipse cx="5.6" cy="9.4" rx="2.3" ry="3" fill="#F2A541"/>
+        <ellipse cx="18.4" cy="9.4" rx="2.3" ry="3" fill="#F2A541"/>
+        <ellipse cx="9.4" cy="4.6" rx="2.1" ry="2.8" fill="#F2A541"/>
+        <ellipse cx="14.6" cy="4.6" rx="2.1" ry="2.8" fill="#F2A541"/>
+      </svg>
+      Walkies &amp; Co.
+    </a>
     <nav class="nav">
       <a href="#how">How it works</a>
       <a href="#availability">Availability</a>
@@ -60,161 +64,261 @@
       <a href="#jean">Meet Jean</a>
       <a href="#faq">FAQ</a>
     </nav>
+    <a class="btn btn-primary header-cta" href="request/">Book an introduction</a>
   </div>
 </header>
 
 <main>
 
-  <!-- HERO -->
+  <!-- ================= HERO ================= -->
   <section class="hero">
+    <div class="hero-bg">
+      <img src="assets/img/placeholder-hero.jpg" alt="A happy dog running along the shoreline at golden hour" fetchpriority="high" width="1600" height="1067">
+    </div>
     <div class="wrap">
-      <h1>Your dog&rsquo;s 20-minute reset</h1>
-      <p class="lead">Friendly, reliable walks in Haarlem from a walker who&rsquo;s out there every day. Same walker, same routine, every walk reported.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="request/">Book a free introduction session</a>
-        <a class="btn btn-secondary" href="#prices">See prices</a>
+      <div class="hero-inner">
+        <h1>Your dog&rsquo;s <em>20-minute reset</em>, every single day.</h1>
+        <p>Friendly, reliable walks around Haarlem from one walker who actually turns up &mdash; same face, same routine, and a photo in your phone before you&rsquo;ve finished your coffee.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="request/">
+            Book a free introduction
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#prices">See prices</a>
+        </div>
+        <p class="hero-note">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#F2A541" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          Free to meet, no commitment &mdash; we see if your dog likes me first.
+        </p>
       </div>
-      <p class="todo" style="margin-top:1.5rem">TODO: hero photo of Jean with a dog on a real Haarlem route.</p>
     </div>
   </section>
 
-  <!-- TRUST STRIP -->
+  <!-- ================= TRUST STRIP ================= -->
   <div class="trust">
     <div class="wrap">
       <ul>
-        <li>Same walker every time</li>
-        <li>Photo + note after every walk</li>
-        <li>Free introduction session</li>
-        <li>Haarlem and nearby</li>
+        <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3A2409" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Same walker every time</li>
+        <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3A2409" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="3"/><circle cx="12" cy="12.5" r="3.2"/><path d="M8 5l1.5-2h5L16 5"/></svg> Photo &amp; note after each walk</li>
+        <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3A2409" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4.5 8-11V5l-8-3-8 3v6c0 6.5 8 11 8 11z"/></svg> Always on the lead</li>
+        <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3A2409" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg> Haarlem &amp; nearby</li>
       </ul>
     </div>
   </div>
 
-  <!-- HOW IT WORKS -->
+  <!-- ================= HOW IT WORKS ================= -->
   <section id="how">
     <div class="wrap">
-      <h2>How it works</h2>
+      <div class="sec-head center">
+        <p class="eyebrow">How it works</p>
+        <h2>Three steps, and none of them are complicated</h2>
+        <p class="lead">No apps, no accounts, no ten-minute sign-up form. Just a message, a coffee, and a routine that sticks.</p>
+      </div>
       <div class="grid grid-3">
-        <div class="card">
-          <h3>1. Request an introduction</h3>
-          <p>Fill in the short form with your dog&rsquo;s details and the days that suit you. It&rsquo;s free and there&rsquo;s no commitment.</p>
+        <div class="card step">
+          <div class="step-num">01</div>
+          <h3>Tell me about your dog</h3>
+          <p>Fill in the short form &mdash; your dog&rsquo;s name, your neighbourhood, and the days that would suit you. Takes about a minute.</p>
         </div>
-        <div class="card">
-          <h3>2. We meet, and agree a routine</h3>
-          <p>I come to you, meet your dog, and we sort out keys, routes and rules. If it&rsquo;s a good fit, we lock in your regular slots there and then.</p>
+        <div class="card step">
+          <div class="step-num">02</div>
+          <h3>We meet, properly</h3>
+          <p>I come to you. We sort out keys, routes, habits and quirks, and your dog decides whether I pass. It&rsquo;s free, and there&rsquo;s no obligation either way.</p>
         </div>
-        <div class="card">
-          <h3>3. Walk, and an update</h3>
-          <p>Your dog gets their walk, always on a lead. You get a photo, the route and a short note &mdash; every single time.</p>
+        <div class="card step">
+          <div class="step-num">03</div>
+          <h3>Walks, and proof</h3>
+          <p>Your regular slot goes in the diary. After every walk you get a photo, the route, and a line on how they got on.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- AVAILABILITY -->
-  <section id="availability" class="band">
+  <!-- ================= THE PROMISE (split) ================= -->
+  <section class="band">
     <div class="wrap">
-      <h2>When I&rsquo;m free</h2>
-      <p>Here&rsquo;s my live availability. Have a look for a slot that suits you, then request an introduction session and I&rsquo;ll confirm it with you.</p>
+      <div class="split">
+        <div class="photo photo-tall">
+          <img src="assets/img/placeholder-tulip.jpg" alt="A golden retriever sitting patiently outdoors holding a tulip" loading="lazy">
+        </div>
+        <div>
+          <p class="eyebrow">The walk promise</p>
+          <h2>What you can actually count on</h2>
+          <p class="lead">Dog walking runs on trust, and trust is built out of small, boring, repeated things.</p>
+          <div class="grid" style="gap:1rem;margin-top:1.5rem">
+            <div class="card" style="padding:1.35rem 1.5rem">
+              <h3>The same face, every time</h3>
+              <p>It&rsquo;s me. Not a rota, not whoever was free. Your dog learns my footsteps.</p>
+            </div>
+            <div class="card" style="padding:1.35rem 1.5rem">
+              <h3>Honest about the weather</h3>
+              <p>No walks in heat, thunder or ice. If it&rsquo;s not safe, we don&rsquo;t go, and you&rsquo;re not charged.</p>
+            </div>
+            <div class="card" style="padding:1.35rem 1.5rem">
+              <h3>Nothing hidden</h3>
+              <p>Prices are on this page. No surcharges for evenings or weekends, no surprises on the bill.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AVAILABILITY ================= -->
+  <section id="availability">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Availability</p>
+        <h2>Here&rsquo;s when I&rsquo;m free</h2>
+        <p class="lead">Have a look for a gap that suits you, then ask for an introduction and I&rsquo;ll confirm it with you.</p>
+      </div>
       <div class="calendar-frame">
         <iframe title="Walkies &amp; Co. availability calendar" loading="lazy" data-calendar src=""></iframe>
       </div>
-      <p class="legend">
-        <strong>Grey blocks = busy.</strong> Anything else is open.
-        This calendar is for guidance &mdash; it isn&rsquo;t a booking system, so nothing here is reserved until we&rsquo;ve met and agreed it.
-        <a href="request/">Request an introduction session</a> and I&rsquo;ll come back to you within 12 hours.
+      <div class="legend">
+        <p><strong><span class="swatch"></span> Grey means busy.</strong> Everything else is open.</p>
+        <p>This is my diary, not a booking system &mdash; nothing here is reserved until we&rsquo;ve met and agreed it. I need at least 12 hours&rsquo; notice, and I&rsquo;ll always come back to you within 12 hours.</p>
+        <p style="margin-bottom:0"><a href="availability/">Open the full calendar</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRICES ================= -->
+  <section id="prices" class="band-sage">
+    <div class="wrap narrow">
+      <div class="sec-head center">
+        <p class="eyebrow">Prices</p>
+        <h2>Simple, and on the page</h2>
+        <p class="lead">No subscriptions, no joining fee, and the same price whatever day it is.</p>
+      </div>
+      <div class="price-card">
+        <div class="price-row featured">
+          <div class="label">Introduction session <span class="tag">Start here</span><small>15 minutes &mdash; we meet, I meet your dog, keys sorted</small></div>
+          <div class="amount">Free</div>
+        </div>
+        <div class="price-row featured">
+          <div class="label">Your first walk <span class="tag">Launch offer</span><small>So you can try it without committing</small></div>
+          <div class="amount">&euro;8</div>
+        </div>
+        <div class="price-row">
+          <div class="label">20-minute walk<small>The standard walk, any day of the week</small></div>
+          <div class="amount">&euro;11</div>
+        </div>
+        <div class="price-row">
+          <div class="label">Second dog<small>Same household, walked together</small></div>
+          <div class="amount">+&euro;4</div>
+        </div>
+        <div class="price-row">
+          <div class="label">10-walk card<small>Valid three months &mdash; works out at &euro;10 a walk</small></div>
+          <div class="amount">&euro;100</div>
+        </div>
+        <div class="price-row">
+          <div class="label">Late cancellation<small>Less than 12 hours&rsquo; notice</small></div>
+          <div class="amount">50%</div>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:1.75rem">
+        <a class="btn btn-outline" href="request/">Book a free introduction</a>
       </p>
     </div>
   </section>
 
-  <!-- THE WALK PROMISE -->
-  <section id="promise">
+  <!-- ================= MEET JEAN ================= -->
+  <section id="jean">
     <div class="wrap">
-      <h2>The walk promise</h2>
-      <div class="grid grid-2">
-        <div class="card"><h3>Consistency</h3><p>One walker &mdash; me. Fixed weekly slots for regulars, and the same handover routine every time.</p></div>
-        <div class="card"><h3>Transparency</h3><p>Prices are on this page. No hidden fees, and cancellation rules in plain language.</p></div>
-        <div class="card"><h3>Proof</h3><p>After every walk: a photo, how long we were out, the route, and a line on how your dog got on.</p></div>
-        <div class="card"><h3>Safety</h3><p>We meet before the first walk. Lead on at all times, no dog parks, and no walks in dangerous weather.</p></div>
+      <div class="split reverse">
+        <div>
+          <p class="eyebrow">Meet your walker</p>
+          <h2>Hi, I&rsquo;m Jean</h2>
+          <div class="bio">
+            <p>I grew up on a farm in South Africa and moved to the Netherlands about three years ago. I now live in Haarlem, and I love it here: the canals, the parks and the dunes nearby.</p>
+            <p>I&rsquo;ve had a soft spot for dogs my whole life. I grew up with a Weimaraner called Sabrina, so I know how much energy, personality and affection a dog can have, and how much a good walk matters.</p>
+            <p>I lead an active lifestyle, so time outside with your dog is the best part of my day. I work in business consulting with a flexible schedule, which lets me offer reliable, regular slots, and I cycle to you.</p>
+            <p>Walkies &amp; Co. is new, and I&rsquo;m building it the way I&rsquo;d want my own dog looked after: we meet first, so I know your dog and your routine; your dog is always on a lead; and you get a photo and a short note after every walk.</p>
+            <p>I&rsquo;m also learning Dutch, so don&rsquo;t be surprised if I practise a word or two!</p>
+          </div>
+        </div>
+        <div class="photo photo-tall">
+          <img src="assets/img/placeholder-dunes.jpg" alt="A collie out on the dunes near Haarlem" loading="lazy">
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICES -->
-  <section id="prices" class="band">
+  <!-- ================= GALLERY ================= -->
+  <section class="band" style="padding-block:clamp(2rem,5vw,3.5rem)">
     <div class="wrap">
-      <h2>Prices</h2>
-      <table class="prices">
-        <thead><tr><th scope="col">What</th><th scope="col">Price</th></tr></thead>
-        <tbody>
-          <tr class="highlight"><td>Introduction session &mdash; we meet, I meet your dog, key handover</td><td>Free</td></tr>
-          <tr class="highlight"><td>Launch offer: your first walk</td><td>&euro;8</td></tr>
-          <tr><td>20-minute walk</td><td>&euro;11</td></tr>
-          <tr><td>Second dog, same household, walked together</td><td>+&euro;4</td></tr>
-          <tr><td>10-walk card (valid 3 months)</td><td>&euro;100</td></tr>
-          <tr><td>Late cancellation (under 12 hours)</td><td>50%</td></tr>
-        </tbody>
-      </table>
-      <p><strong>No evening or weekend surcharge.</strong> A walk costs the same whenever it happens.</p>
+      <div class="gallery">
+        <div class="photo"><img src="assets/img/placeholder-golden.jpg" alt="A golden retriever looking at the camera" loading="lazy"></div>
+        <div class="photo"><img src="assets/img/placeholder-street.jpg" alt="A black and white dog out on a walk in town" loading="lazy"></div>
+        <div class="photo"><img src="assets/img/placeholder-dunes.jpg" alt="A collie on a windy beach" loading="lazy"></div>
+        <div class="photo"><img src="assets/img/placeholder-tulip.jpg" alt="A retriever holding a tulip" loading="lazy"></div>
+      </div>
     </div>
   </section>
 
-  <!-- MEET JEAN -->
-  <section id="jean">
-    <div class="wrap">
-      <h2>Meet Jean</h2>
-      <p>Hi, I&rsquo;m Jean. I grew up on a farm in South Africa and moved to the Netherlands about three years ago. I now live in Haarlem, and I love it here: the canals, the parks and the dunes nearby.</p>
-      <p>I&rsquo;ve had a soft spot for dogs my whole life. I grew up with a Weimaraner called Sabrina, so I know how much energy, personality and affection a dog can have, and how much a good walk matters.</p>
-      <p>I lead an active lifestyle, so time outside with your dog is the best part of my day. I work in business consulting with a flexible schedule, which lets me offer reliable, regular slots, and I cycle to you.</p>
-      <p>Walkies &amp; Co. is new, and I&rsquo;m building it the way I&rsquo;d want my own dog looked after: we meet first, so I know your dog and your routine; your dog is always on a lead; and you get a photo and a short note after every walk.</p>
-      <p>I&rsquo;m also learning Dutch, so don&rsquo;t be surprised if I practise a word or two!</p>
-      <p class="todo">TODO: portrait photo of Jean with a dog.</p>
+  <!-- ================= AREAS ================= -->
+  <section id="areas">
+    <div class="wrap narrow">
+      <div class="sec-head center">
+        <p class="eyebrow">Where I walk</p>
+        <h2>Haarlem, and the bits around it</h2>
+      </div>
+      <ul class="chips" style="justify-content:center">
+        <li>Haarlem Centrum</li>
+        <li>Haarlem Noord</li>
+        <li>Haarlem Oost</li>
+        <li>Haarlem Zuid</li>
+        <li>Schalkwijk</li>
+      </ul>
+      <p style="text-align:center">I cycle to you, so if you&rsquo;re a little outside these, just ask &mdash; there&rsquo;s a good chance I can still reach you. Favourite routes so far: the Haarlemmerhout, Kenaupark and along the Spaarne.</p>
     </div>
   </section>
 
-  <!-- AREAS -->
-  <section id="areas" class="band">
-    <div class="wrap">
-      <h2>Where I walk</h2>
-      <p>I cycle to you, so I cover Haarlem and the areas close by. Not sure if you&rsquo;re in range? Just ask.</p>
-      <p class="todo">TODO_NEIGHBOURHOODS &mdash; confirm which areas you&rsquo;ll cover by bike, and the maximum distance.</p>
-    </div>
-  </section>
+  <!-- ================= FAQ ================= -->
+  <section id="faq" class="band-sage">
+    <div class="wrap narrow">
+      <div class="sec-head center">
+        <p class="eyebrow">Questions</p>
+        <h2>The things people ask</h2>
+      </div>
 
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="wrap">
-      <h2>Questions</h2>
-
-      <details><summary>Can I book a walk directly on the website?</summary>
-        <p>No &mdash; and that&rsquo;s deliberate. Every dog starts with a free introduction session so I can meet you and your dog first. Once we&rsquo;ve met and agreed a routine, I put your walks in the diary myself. The calendar on this page shows you when I&rsquo;m free, but nothing is reserved until we&rsquo;ve spoken.</p></details>
+      <details><summary>Can I book a walk straight from the website?</summary>
+        <p>No, and that&rsquo;s deliberate. Every dog starts with a free introduction session so I can meet you both first. Once we&rsquo;ve met and agreed a routine, I put your walks in the diary myself. The calendar on this page shows you when I&rsquo;m free, but nothing is reserved until we&rsquo;ve actually spoken.</p></details>
 
       <details><summary>What happens at the introduction session?</summary>
-        <p>It takes about 15 minutes and it&rsquo;s free. I come to you, we meet, I meet your dog, and we go through the details &mdash; vet, health, habits, triggers, keys and routes. If it feels right for all three of us, we agree your slots on the spot.</p></details>
+        <p>It takes about 15 minutes and it&rsquo;s completely free. I come to you, we meet, I meet your dog, and we go through the details &mdash; vet, health, habits, what sets them off, keys and routes. If it feels right for all three of us, we agree your slots there and then.</p></details>
 
       <details><summary>What if the weather is bad?</summary>
-        <p>I don&rsquo;t walk in heat, thunderstorms or ice &mdash; it isn&rsquo;t safe for your dog. If I have to skip a walk for weather, you aren&rsquo;t charged.</p></details>
+        <p>I don&rsquo;t walk in heat, thunderstorms or ice &mdash; it isn&rsquo;t safe, and a hot pavement does real damage to paws. If I have to skip a walk for weather I&rsquo;ll message you, and you aren&rsquo;t charged.</p></details>
 
-      <details><summary>What about insurance and liability?</summary>
-        <p class="todo">TODO-REVIEW &mdash; pending the Terms research task. Do not publish wording here until it is drafted and reviewed.</p></details>
+      <details><summary>How do I pay?</summary>
+        <p>We&rsquo;ll sort that out at the introduction session &mdash; it&rsquo;s straightforward, and there&rsquo;s nothing to set up in advance.</p></details>
 
-      <details><summary>Do you take reactive dogs?</summary>
-        <p>At the moment I&rsquo;m starting with friendly, healthy, lead-trained dogs. If your dog has a bite history or serious reactivity, I&rsquo;d rather be honest and say it isn&rsquo;t a good fit yet than take a risk with them.</p></details>
+      <details><summary>Do you take reactive or nervous dogs?</summary>
+        <p>I&rsquo;m starting with friendly, healthy, lead-trained dogs. If your dog has a bite history or serious reactivity, I&rsquo;d rather be honest and say it isn&rsquo;t the right fit yet than take a risk with them. Do ask, though &mdash; nervous isn&rsquo;t the same as reactive, and plenty of shy dogs do brilliantly with a calm, predictable routine.</p></details>
 
       <details><summary>Do you speak Dutch?</summary>
         <p>I&rsquo;m learning! I work in English, which suits a lot of people here, and I&rsquo;m always happy to practise a few words with you.</p></details>
 
-      <details><summary>How do I pay?</summary>
-        <p class="todo">TODO &mdash; confirm Tikkie or bank transfer, and whether payment is per walk or weekly.</p></details>
+      <details><summary>What if I need to cancel?</summary>
+        <p>Life happens &mdash; just let me know. If it&rsquo;s more than 12 hours ahead there&rsquo;s no charge at all. Under 12 hours it&rsquo;s half the walk price, because the slot has usually gone by then.</p></details>
     </div>
   </section>
 
-  <!-- FINAL CTA -->
-  <section class="band">
-    <div class="wrap" style="text-align:center">
-      <h2>Ready to meet?</h2>
-      <p>Book a free introduction session &mdash; lock in your time slot and introduce your dog.</p>
-      <a class="btn btn-primary" href="request/">Book a free introduction session</a>
+  <!-- ================= FINAL CTA ================= -->
+  <section>
+    <div class="wrap">
+      <div class="cta-panel">
+        <h2>Shall we meet?</h2>
+        <p>Book a free introduction session, lock in your time slot, and let your dog have the final say.</p>
+        <p style="margin-top:1.75rem">
+          <a class="btn btn-primary" href="request/">
+            Book a free introduction
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </p>
+      </div>
     </div>
   </section>
 
@@ -222,10 +326,32 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <p><strong>Walkies &amp; Co.</strong> &mdash; hondenuitlaatservice Haarlem</p>
-    <p><a data-email href="mailto:walkiesnco@gmail.com">walkiesnco@gmail.com</a></p>
-    <p><a href="terms/">Terms</a> &middot; <a href="privacy/">Privacy</a></p>
-    <p class="small">Dog walking in Haarlem Noord, Oost, Zuid, Centrum and Schalkwijk.</p>
+    <div class="footer-grid">
+      <div>
+        <h3>Walkies &amp; Co.</h3>
+        <p style="max-width:26rem">Dog walking in Haarlem &mdash; hondenuitlaatservice Haarlem. Same walker, same routine, every walk reported.</p>
+      </div>
+      <div>
+        <h3>Get in touch</h3>
+        <ul class="footer-links">
+          <li><a data-email href="mailto:walkiesnco@gmail.com">walkiesnco@gmail.com</a></li>
+          <li><a data-whatsapp href="#">WhatsApp</a></li>
+          <li><a href="request/">Book an introduction</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Pages</h3>
+        <ul class="footer-links">
+          <li><a href="availability/">Availability</a></li>
+          <li><a href="#prices">Prices</a></li>
+          <li><a href="privacy/">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Walkies &amp; Co. &mdash; Haarlem, Noord-Holland</span>
+      <span>Walks in Haarlem Noord, Oost, Zuid, Centrum &amp; Schalkwijk</span>
+    </div>
   </div>
 </footer>
 

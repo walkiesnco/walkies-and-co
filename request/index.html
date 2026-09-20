@@ -3,84 +3,110 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Book a Free Introduction Session — Walkies &amp; Co.</title>
+<title>Book a Free Introduction — Walkies &amp; Co.</title>
 <meta name="description" content="Request a free introduction session for your dog in Haarlem. No commitment — we meet, I meet your dog, and we agree a routine that suits you.">
+<meta name="theme-color" content="#2F5D50">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="../">Walkies &amp; Co.</a>
+    <a class="brand" href="../">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <ellipse cx="12" cy="15.5" rx="5" ry="4.2" fill="#F2A541"/>
+        <ellipse cx="5.6" cy="9.4" rx="2.3" ry="3" fill="#F2A541"/>
+        <ellipse cx="18.4" cy="9.4" rx="2.3" ry="3" fill="#F2A541"/>
+        <ellipse cx="9.4" cy="4.6" rx="2.1" ry="2.8" fill="#F2A541"/>
+        <ellipse cx="14.6" cy="4.6" rx="2.1" ry="2.8" fill="#F2A541"/>
+      </svg>
+      Walkies &amp; Co.
+    </a>
     <nav class="nav">
       <a href="../#how">How it works</a>
-      <a href="../#prices">Prices</a>
       <a href="../availability/">Availability</a>
+      <a href="../#prices">Prices</a>
+      <a href="../#jean">Meet Jean</a>
     </nav>
   </div>
 </header>
 
 <main>
   <section>
-    <div class="wrap" style="max-width:44rem">
-      <h1>Book a free introduction session</h1>
-      <p>Lock in your time slot and introduce your dog. Tell me a bit about the two of you and I will come back to you within 12 hours to agree a time.</p>
-      <p><strong>This is a request, not a booking.</strong> Nothing is confirmed until I have replied to you.</p>
+    <div class="wrap narrow">
+      <p class="eyebrow">Free, no commitment</p>
+      <h1 style="font-size:clamp(2rem,5vw,3rem)">Book a free introduction</h1>
+      <p class="lead">Tell me a little about you and your dog, and I&rsquo;ll come back to you within 12 hours to agree a time.</p>
 
-      <form class="card" action="https://api.web3forms.com/submit" method="POST" data-request-form>
+      <div class="legend" style="margin-bottom:2rem">
+        <p style="margin-bottom:0"><strong>This is a request, not a booking.</strong> Nothing is confirmed until I&rsquo;ve replied to you &mdash; and I always do.</p>
+      </div>
+
+      <form class="card" action="https://api.web3forms.com/submit" method="POST" data-request-form style="padding:2rem 1.75rem">
         <input type="hidden" name="access_key" value="TODO_WEB3FORMS_KEY">
-        <input type="hidden" name="subject" value="New introduction session request - Walkies &amp; Co.">
+        <input type="hidden" name="subject" value="New introduction request — Walkies &amp; Co.">
         <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
-        <p>
-          <label for="name"><strong>Your name</strong></label><br>
-          <input id="name" name="name" type="text" required autocomplete="name" style="width:100%;padding:.7rem;border:1px solid var(--sage);border-radius:8px;font:inherit">
-        </p>
-        <p>
-          <label for="email"><strong>Your email</strong></label><br>
-          <input id="email" name="email" type="email" required autocomplete="email" style="width:100%;padding:.7rem;border:1px solid var(--sage);border-radius:8px;font:inherit">
-        </p>
-        <p>
-          <label for="phone"><strong>Phone or WhatsApp</strong> <span style="font-weight:400">(optional, but it is the quickest way to reach you)</span></label><br>
-          <input id="phone" name="phone" type="tel" autocomplete="tel" style="width:100%;padding:.7rem;border:1px solid var(--sage);border-radius:8px;font:inherit">
-        </p>
-        <p>
-          <label for="dog"><strong>Your dog&rsquo;s name and breed</strong></label><br>
-          <input id="dog" name="dog" type="text" required style="width:100%;padding:.7rem;border:1px solid var(--sage);border-radius:8px;font:inherit">
-        </p>
-        <p>
-          <label for="area"><strong>Which part of Haarlem are you in?</strong></label><br>
-          <input id="area" name="area" type="text" required style="width:100%;padding:.7rem;border:1px solid var(--sage);border-radius:8px;font:inherit">
-        </p>
-        <p>
-          <label for="slots"><strong>Which days and times would suit you?</strong></label><br>
-          <span style="font-size:.95rem">Have a look at <a href="../availability/">my availability</a> first &mdash; grey means busy.</span><br>
-          <textarea id="slots" name="slots" rows="3" required style="width:100%;padding:.7rem;border:1px solid var(--sage);border-radius:8px;font:inherit"></textarea>
-        </p>
-        <p>
-          <label for="notes"><strong>Anything I should know about your dog?</strong></label><br>
-          <span style="font-size:.95rem">Health, age, pulling on the lead, nervous around other dogs &mdash; anything at all.</span><br>
-          <textarea id="notes" name="notes" rows="3" style="width:100%;padding:.7rem;border:1px solid var(--sage);border-radius:8px;font:inherit"></textarea>
-        </p>
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="email">Your email</label>
+          <input id="email" name="email" type="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="phone">Phone or WhatsApp</label>
+          <span class="hint">Optional, but it&rsquo;s the quickest way for me to reach you.</span>
+          <input id="phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="dog">Your dog&rsquo;s name and breed</label>
+          <input id="dog" name="dog" type="text" required placeholder="e.g. Rex, a four-year-old labrador">
+        </div>
+        <div class="field">
+          <label for="area">Which part of Haarlem are you in?</label>
+          <input id="area" name="area" type="text" required>
+        </div>
+        <div class="field">
+          <label for="slots">Which days and times would suit you?</label>
+          <span class="hint">Have a look at <a href="../availability/">my availability</a> first &mdash; grey means busy.</span>
+          <textarea id="slots" name="slots" rows="3" required></textarea>
+        </div>
+        <div class="field">
+          <label for="notes">Anything I should know about your dog?</label>
+          <span class="hint">Health, age, pulling on the lead, nervous around other dogs &mdash; anything at all. It all helps.</span>
+          <textarea id="notes" name="notes" rows="3"></textarea>
+        </div>
 
-        <button class="btn btn-primary" type="submit">Send my request</button>
-        <p style="font-size:.9rem;margin-top:1rem">I use your details only to arrange the introduction session. See the <a href="../privacy/">privacy statement</a>.</p>
+        <button class="btn btn-primary" type="submit">
+          Send my request
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <p style="font-size:.9rem;margin:1.25rem 0 0;color:var(--muted)">I use your details only to arrange the introduction session. See the <a href="../privacy/">privacy statement</a>.</p>
       </form>
 
       <div class="legend" data-form-fallback hidden>
-        <strong>The form is not switched on yet.</strong>
-        In the meantime, email me at <a data-email href="mailto:walkiesnco@gmail.com">walkiesnco@gmail.com</a> with your name, your dog and the days that suit you, and I will come straight back to you.
+        <p><strong>The form isn&rsquo;t switched on just yet.</strong></p>
+        <p style="margin-bottom:0">In the meantime, email me at <a data-email href="mailto:walkiesnco@gmail.com">walkiesnco@gmail.com</a> with your name, your dog and the days that suit you, and I&rsquo;ll come straight back to you.</p>
       </div>
 
-      <p style="margin-top:2rem">Prefer to message? <a data-whatsapp href="#">Send me a WhatsApp</a> or email <a data-email href="mailto:walkiesnco@gmail.com">walkiesnco@gmail.com</a>.</p>
+      <p style="margin-top:2rem;text-align:center;color:var(--muted)">
+        Prefer to message? <a data-whatsapp href="#">Send me a WhatsApp</a> or email <a data-email href="mailto:walkiesnco@gmail.com">walkiesnco@gmail.com</a>.
+      </p>
     </div>
   </section>
 </main>
 
 <footer class="site-footer">
   <div class="wrap">
-    <p><strong>Walkies &amp; Co.</strong> &mdash; hondenuitlaatservice Haarlem</p>
-    <p><a href="../terms/">Terms</a> &middot; <a href="../privacy/">Privacy</a></p>
+    <div class="footer-bottom" style="border-top:0;padding-top:0">
+      <span>&copy; 2026 Walkies &amp; Co. &mdash; Haarlem</span>
+      <span><a href="../">Home</a> &middot; <a href="../privacy/">Privacy</a></span>
+    </div>
   </div>
 </footer>
 
