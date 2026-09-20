@@ -102,40 +102,10 @@
     trails.push({ host: host, paws: paws, op: cfg.opacity });
   });
 
-
-  /* ---- Hero dog: sit -> stand -> bark, driven by scroll position ---- */
-  var shell = document.querySelector(".hero-shell");
-  var stage = document.querySelector(".dog-stage");
-  var header = document.querySelector(".site-header");
-
-  // the hero sits under the header, so publish its real height to CSS
-  function headerH() {
-    if (header) document.documentElement.style.setProperty("--header-h", header.offsetHeight + "px");
-  }
-  headerH();
-  window.addEventListener("resize", headerH, { passive: true });
-
-  function dogFrame() {
-    if (!shell || !stage) return;
-    var r = shell.getBoundingClientRect();
-    // 0 while the hero is fully in view, 1 by the time it has scrolled away
-    var p = Math.min(1, Math.max(0, -r.top / (r.height * 0.72)));
-
-    // stands over the first 55% of that, then barks near the end
-    var stand = Math.min(1, p / 0.55);
-    var bark  = Math.min(1, Math.max(0, (p - 0.6) / 0.3));
-
-    stage.style.setProperty("--sit", (1 - stand).toFixed(3));
-    stage.style.setProperty("--bark", bark.toFixed(3));
-    stage.classList.toggle("barking", bark > 0.05);
-  }
-
   var parallax = Array.prototype.slice.call(document.querySelectorAll("[data-parallax]"));
 
   function frame() {
     var vh = window.innerHeight;
-
-    dogFrame();
 
     // Photographs drift against the page — the parallax the reference site uses.
     for (var i = 0; i < parallax.length; i++) {
@@ -173,20 +143,19 @@
     frame();
   }
 
-  /* ============ 4. Header: transparent over the hero, solid past it ============ */
+  /* ============ 4. Header shadow ============ */
+  var header = document.querySelector(".site-header");
   if (header) {
     var t2 = false;
     var hs = function () {
       if (t2) return;
       t2 = true;
       requestAnimationFrame(function () {
-        var trigger = shell ? shell.getBoundingClientRect().bottom - header.offsetHeight - 8 : 12;
-        header.classList.toggle("scrolled", shell ? trigger < 0 : window.scrollY > 12);
+        header.classList.toggle("scrolled", window.scrollY > 12);
         t2 = false;
       });
     };
     window.addEventListener("scroll", hs, { passive: true });
-    window.addEventListener("resize", hs, { passive: true });
     hs();
   }
 })();

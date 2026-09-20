@@ -110,25 +110,13 @@ section { padding-block: clamp(4rem, 10vw, 8rem); position: relative; }
 
 /* --- Header --- */
 .site-header {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 90;
-  background: transparent;
-  border-bottom: 1px solid transparent;
-  transition: background .35s var(--ease), border-color .35s, box-shadow .35s;
-  padding-inline: clamp(8px, 1.2vw, 16px);
-}
-.site-header.scrolled {
-  background: rgba(255,255,255,.92);
+  position: sticky; top: 0; z-index: 80;
+  background: rgba(255,255,255,.88);
   backdrop-filter: saturate(180%) blur(14px);
-  border-bottom-color: var(--line);
-  box-shadow: var(--shadow-xs);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s, box-shadow .3s;
 }
-/* nav sits inside the hero image, so it starts light and flips on scroll */
-.site-header .brand { color: #fff; }
-.site-header .nav a { color: rgba(255,255,255,.92); }
-.site-header.scrolled .brand { color: var(--forest); }
-.site-header.scrolled .nav a { color: var(--charcoal); }
-.site-header .brand svg ellipse:not(:first-child) { fill: #fff; transition: fill .35s var(--ease); }
-.site-header.scrolled .brand svg ellipse:not(:first-child) { fill: #2F5D50; }
+.site-header.scrolled { border-bottom-color: var(--line); box-shadow: var(--shadow-xs); }
 .site-header .wrap { display: flex; align-items: center; gap: 1rem; padding-block: .95rem; }
 .brand {
   display: flex; align-items: center; gap: .5rem;
@@ -149,23 +137,12 @@ section { padding-block: clamp(4rem, 10vw, 8rem); position: relative; }
 }
 
 /* --- Hero --- */
-.hero-shell {
-  position: relative;
-  margin: clamp(8px, 1.2vw, 16px);
-  border-radius: clamp(18px, 2.4vw, 34px);
-  overflow: hidden;
-  background: var(--forest-deep);
-  isolation: isolate;
-}
-
-
-.hero {
-  position: relative;
-  min-height: min(88vh, 760px);
-  display: flex; align-items: center;
-  overflow: hidden;
-  padding-block: clamp(3rem,8vw,6rem) clamp(9rem,22vw,13rem);
-  padding-top: calc(var(--header-h, 74px) + clamp(2.5rem,7vw,5rem));
+.hero { position: relative; min-height: min(90vh, 780px); display: flex; align-items: center; overflow: hidden; padding-block: clamp(4rem,10vw,7rem); }
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+.hero-bg::after {
+  content:""; position: absolute; inset: 0;
+  background: linear-gradient(100deg, rgba(27,58,49,.93) 0%, rgba(27,58,49,.78) 45%, rgba(27,58,49,.28) 100%);
 }
 .hero .wrap { position: relative; z-index: 2; }
 .hero-inner { max-width: 42rem; }
@@ -181,79 +158,6 @@ section { padding-block: clamp(4rem, 10vw, 8rem); position: relative; }
 [data-parallax] { overflow: hidden; }
 [data-parallax] > img { will-change: transform; transform: translate3d(0, var(--py, 0px), 0) scale(1.14); }
 .hero-bg[data-parallax] > img { transform: translate3d(0, var(--py, 0px), 0) scale(1.1); }
-
-
-/* --- Hero dog: sits, then stands as you scroll (scrub-linked) --- */
-.dog-stage {
-  position: absolute; z-index: 3;
-  left: clamp(-12px, 1vw, 24px); bottom: -2px;
-  width: clamp(180px, 27vw, 340px);
-  pointer-events: none;
-}
-.dogsvg { width: 100%; height: auto; overflow: visible; display: block; }
-
-/* --sit runs 1 -> 0 as you scroll; the rear lifts and the body rises */
-.d-core { transform: translateY(calc(var(--sit, 1) * 20px)); }
-.d-rear {
-  transform-origin: 92px 104px;
-  transform: rotate(calc(var(--sit, 1) * 25deg)) translateY(calc(var(--sit, 1) * 9px));
-}
-.d-head { transform-origin: 176px 76px; transform: rotate(calc(var(--sit, 1) * 6deg)); }
-.d-core, .d-rear, .d-head { transition: transform .18s linear; }
-.d-tail { transform-origin: 62px 96px; animation: wag .55s ease-in-out infinite alternate; }
-@keyframes wag { from { transform: rotate(-12deg); } to { transform: rotate(14deg); } }
-
-/* mouth opens only while barking */
-.d-yap   { opacity: var(--bark, 0); transform-origin: 231px 93px; transform: scaleY(var(--bark, 0)); }
-.d-mouth { opacity: calc(1 - var(--bark, 0)); }
-
-/* --- Bark marks --- */
-.bark {
-  position: absolute; z-index: 4;
-  left: clamp(120px, 20vw, 250px); bottom: clamp(110px, 17vw, 210px);
-  width: clamp(44px, 6vw, 74px);
-  opacity: var(--bark, 0);
-}
-.bark .ba {
-  opacity: 0; transform-origin: 10px 35px;
-  animation: yip .9s ease-out infinite;
-  animation-delay: calc(var(--ai) * .13s);
-  animation-play-state: paused;
-}
-.barking .bark .ba { animation-play-state: running; }
-@keyframes yip {
-  0%   { opacity: 0; transform: translateX(-4px) scale(.7); }
-  35%  { opacity: 1; transform: translateX(0) scale(1); }
-  100% { opacity: 0; transform: translateX(8px) scale(1.15); }
-}
-
-/* --- Birds startled by the bark --- */
-.birds {
-  position: absolute; z-index: 4;
-  left: clamp(150px, 26vw, 330px); bottom: clamp(190px, 30vw, 360px);
-  width: clamp(110px, 17vw, 210px);
-  opacity: var(--bark, 0);
-}
-.birds .bird {
-  transform: translate(calc(var(--bark, 0) * (40px + var(--bi) * 34px)),
-                       calc(var(--bark, 0) * (-26px - var(--bi) * 20px)));
-  animation: flap .34s ease-in-out infinite alternate;
-  animation-delay: calc(var(--bi) * .09s);
-  transition: transform .25s linear;
-}
-@keyframes flap { from { opacity: .65; } to { opacity: 1; } }
-
-@media (max-width: 40rem) {
-  .dog-stage { width: 165px; left: -14px; }
-  .bark  { left: 112px; bottom: 104px; }
-  .birds { left: 140px; bottom: 170px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .d-core, .d-rear, .d-head { transform: none !important; }
-  .d-tail, .bark .ba, .birds .bird { animation: none !important; }
-  .bark, .birds { opacity: 0 !important; }
-}
 
 /* --- Paw trails: decorative, injected by main.js --- */
 .paw {
